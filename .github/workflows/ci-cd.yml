@@ -27,7 +27,8 @@ jobs:
         run: npx --yes html-validate@8 index.html
 
       - name: Check for broken links
-        run: npx --yes linkinator@6 index.html --recurse
+        # linkedin.com bloquea peticiones automatizadas (responde 999), no es un enlace roto real
+        run: npx --yes linkinator@6 index.html --recurse --skip "linkedin.com"
 
   deploy:
     needs: validate
