@@ -6,6 +6,15 @@ Portafolio personal de Eloy Pardo, desarrollador backend. Sitio estático de una
 
 Publicado con GitHub Pages: _(añade aquí la URL una vez publicado)_
 
+## CI/CD
+
+Cada push a `main` (incluidos los merges de otras ramas) dispara el workflow `.github/workflows/ci-cd.yml`:
+
+1. **Validación** (`validate`): valida el HTML (`html-validate`) y comprueba que no haya enlaces rotos (`linkinator`), tanto en `push` como en `pull_request` hacia `main`.
+2. **Despliegue** (`deploy`): si la validación pasa, publica el sitio automáticamente en GitHub Pages. No requiere aprobación manual.
+
+Para que el despliegue funcione hay que activarlo una vez en `Settings > Pages > Build and deployment > Source`, seleccionando **GitHub Actions**.
+
 ## Características
 
 - Diseño de una sola página con scroll por secciones: Hero, Sobre mí, Trayectoria, Idiomas & Soft Skills, Stack tecnológico, Proyectos y Contacto.
