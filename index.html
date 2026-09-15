@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Eloy Pardo — Portafolio</title>
+<script>
+  (function () {
+    var saved = null;
+    try { saved = localStorage.getItem('theme'); } catch (e) {}
+    var theme = saved || (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+    document.documentElement.setAttribute('data-theme', theme);
+  })();
+</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@600;700;800&family=Manrope:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/css/styles.css">
+</head>
+<body>
+
+<nav>
+  <a href="#personal">Sobre mí</a>
+  <a href="#trayectoria">Trayectoria</a>
+  <a href="#idiomas">Idiomas</a>
+  <a href="#stack">Stack</a>
+  <a href="#proyectos">Proyectos</a>
+  <a href="#contacto">Contacto</a>
+</nav>
+
+<button id="theme-toggle" class="theme-toggle" type="button" aria-label="Cambiar entre modo claro y oscuro" aria-pressed="false">
+  <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+    <circle cx="12" cy="12" r="4"/>
+    <path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/>
+  </svg>
+  <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+    <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79Z"/>
+  </svg>
+</button>
+
+<!-- HERO -->
+<section class="hero" id="inicio">
+  <div class="hero-media">
+    <img src="assets/img/mono.jpg" alt="Foto de Eloy Pardo">
+    <span class="hero-status" aria-hidden="true"><span class="status-dot"></span> Disponible</span>
+  </div>
+  <span class="hero-slash-glow" aria-hidden="true"></span>
+  <span class="hero-slash-line" aria-hidden="true"></span>
+  <div class="hero-content">
+    <p class="hero-eyebrow">&lt;hola, soy /&gt;</p>
+    <h1>Eloy Pardo</h1>
+    <p class="tagline">Desarrollador Backend apasionado por el código limpio, la nube —AWS Cloud Practitioner— y aprender algo nuevo cada día.</p>
+  </div>
+</section>
+
+<!-- SOBRE MI PERSONAL -->
+<section id="personal" class="reveal">
+  <h2 class="section-title">Sobre mí</h2>
+  <p class="section-sub">Un poco más de mí, fuera del código.</p>
+  <p>Soy de Cenizate, un pueblo de Albacete, y cuando apago el ordenador me encontrarás haciendo deporte, escuchando música, jugando videojuegos, programando por mi cuenta o desconectando en la naturaleza. Creo firmemente que ese equilibrio es el que me mantiene con la cabeza despejada para volver a los problemas técnicos con otra perspectiva.</p>
+  <p>Me mueve la curiosidad: me gusta entender cómo funcionan las cosas por dentro, desde una API hasta la infraestructura que la sostiene, y no me quedo tranquilo hasta dar con una solución que además de funcionar, esté bien hecha. Esa manera de ser, constante y analítica, es la misma tanto dentro como fuera del código.</p>
+</section>
+
+<!-- SOBRE MI PROFESIONAL -->
+<section id="trayectoria" class="reveal">
+  <h2 class="section-title">Trayectoria profesional</h2>
+  <p class="section-sub">Mi experiencia laboral y formación académica.</p>
+  <div class="track-grid">
+    <div class="track-block">
+      <h3>Experiencia</h3>
+      <div class="timeline-item">
+        <h4>Desarrollador Backend</h4>
+        <div class="meta">Bit2Me · 03/2025 – 05/2025</div>
+        <p>Desarrollo y mantenimiento de aplicaciones y APIs con TypeScript, NestJS y Node.js. Diseño e implementación de nuevas funcionalidades, testing, resolución de incidencias y mejora del rendimiento de servicios, trabajando con Docker, Git y entornos Linux dentro de equipos ágiles.</p>
+      </div>
+      <div class="timeline-item">
+        <h4>Hackathon Castellón</h4>
+        <div class="meta">2024</div>
+        <p>Competición centrada principalmente en AWS en la que quedamos 9º de la Comunidad Valenciana. Colaboramos en equipo en el diseño e implementación de distintas soluciones, aprendiendo a trabajar en equipo, a manejarnos por entornos AWS y a resolver distintos problemas dentro de ellos.</p>
+      </div>
+    </div>
+    <div class="track-block">
+      <h3>Estudios</h3>
+      <div class="timeline-item">
+        <h4>Ciclo de Especialización en Administración de Recursos y Servicios Cloud</h4>
+        <div class="meta">IES Álvaro Falomir · 2025 – 2026</div>
+        <p>Formación centrada en tecnologías cloud, arquitecturas distribuidas y administración de servicios en la nube.</p>
+      </div>
+      <div class="timeline-item">
+        <h4>Ciclo Formativo de Grado Superior en Desarrollo de Aplicaciones Web</h4>
+        <div class="meta">IES Álvaro Falomir · 2023 – 2025</div>
+        <p>Formación en desarrollo backend y frontend, bases de datos y buenas prácticas de programación.</p>
+      </div>
+      <div class="timeline-item">
+        <h4>Bachillerato en Ciencias de la Tecnología</h4>
+        <div class="meta">IES Álvaro Falomir · 2021 – 2023</div>
+        <p>Base científico-tecnológica previa a la especialización en desarrollo de software.</p>
+      </div>
+      <div class="timeline-item timeline-item--cert">
+        <div>
+          <h4>AWS Certified Cloud Practitioner (CLF-C02)</h4>
+          <div class="meta">Certificación</div>
+          <p>Certificación oficial de AWS sobre fundamentos de computación en la nube, servicios y buenas prácticas.</p>
+        </div>
+        <img class="cert-badge" src="assets/img/aws-cloud-practitioner-badge.png" alt="Insignia AWS Certified Cloud Practitioner">
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- IDIOMAS Y SOFT SKILLS -->
+<section id="idiomas" class="reveal">
+  <h2 class="section-title">Idiomas &amp; Soft Skills</h2>
+  <p class="section-sub">Cómo me comunico y cómo trabajo con los demás.</p>
+  <div class="track-grid">
+    <div class="track-block">
+      <h3>Idiomas</h3>
+      <div class="language-item">
+        <div class="language-head">
+          <span>Español</span>
+          <span class="language-level">Nativo</span>
+        </div>
+        <div class="language-bar"><div class="language-bar-fill" style="width: 100%;"></div></div>
+      </div>
+      <div class="language-item">
+        <div class="language-head">
+          <span>Catalán / Valenciano</span>
+          <span class="language-level">Nativo</span>
+        </div>
+        <div class="language-bar"><div class="language-bar-fill" style="width: 100%;"></div></div>
+      </div>
+      <div class="language-item">
+        <div class="language-head">
+          <span>Inglés</span>
+          <span class="language-level">B1 / Intermedio</span>
+        </div>
+        <div class="language-bar"><div class="language-bar-fill" style="width: 55%;"></div></div>
+      </div>
+    </div>
+    <div class="track-block">
+      <h3>Soft Skills</h3>
+      <div class="tech-list tech-list--skills">
+        <span class="tech-chip tech-chip--skill">Resolución de problemas</span>
+        <span class="tech-chip tech-chip--skill">Trabajo en equipo</span>
+        <span class="tech-chip tech-chip--skill">Autonomía</span>
+        <span class="tech-chip tech-chip--skill">Comunicación bajo presión</span>
+        <span class="tech-chip tech-chip--skill">Mentalidad de mejora continua</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- HARD SKILLS / STACK -->
+<section id="stack" class="reveal">
+  <h2 class="section-title">Stack tecnológico</h2>
+  <p class="section-sub">Las herramientas con las que trabajo día a día.</p>
+  <div class="skills-grid">
+    <div class="skill-group">
+      <h3>Lenguajes</h3>
+      <div class="tech-list">
+        <span class="tech-chip">Java</span>
+        <span class="tech-chip">TypeScript</span>
+        <span class="tech-chip">JavaScript</span>
+      </div>
+    </div>
+    <div class="skill-group">
+      <h3>Frameworks &amp; Librerías</h3>
+      <div class="tech-list">
+        <span class="tech-chip">Spring Boot</span>
+        <span class="tech-chip">NestJS</span>
+        <span class="tech-chip">Node.js</span>
+      </div>
+    </div>
+    <div class="skill-group">
+      <h3>Cloud &amp; DevOps</h3>
+      <div class="tech-list">
+        <span class="tech-chip">AWS</span>
+        <span class="tech-chip">Docker</span>
+        <span class="tech-chip">Kubernetes</span>
+      </div>
+    </div>
+    <div class="skill-group">
+      <h3>Bases de datos</h3>
+      <div class="tech-list">
+        <span class="tech-chip">PostgreSQL</span>
+        <span class="tech-chip">MySQL</span>
+        <span class="tech-chip">MongoDB</span>
+      </div>
+    </div>
+    <div class="skill-group">
+      <h3>Herramientas</h3>
+      <div class="tech-list">
+        <span class="tech-chip">Git</span>
+        <span class="tech-chip">GitHub</span>
+        <span class="tech-chip">Bitbucket</span>
+      </div>
+    </div>
+    <div class="skill-group">
+      <h3>Otros</h3>
+      <div class="tech-list">
+        <span class="tech-chip">REST</span>
+        <span class="tech-chip">SOAP</span>
+        <span class="tech-chip">Linux</span>
+        <span class="tech-chip">HTML</span>
+        <span class="tech-chip">CSS</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROYECTOS -->
+<section id="proyectos" class="reveal">
+  <h2 class="section-title">Proyectos personales</h2>
+  <p class="section-sub">Algunas cosas que he construido por mi cuenta. Haz clic en una para ver más.</p>
+  <div class="projects-grid">
+    <div class="project-card" data-project="proyecto-1" tabindex="0" role="button" aria-haspopup="dialog">
+      <h3>TradeSim</h3>
+      <p class="desc-short">API de simulación del mercado de criptomonedas para practicar estrategias de trading sin arriesgar dinero real.</p>
+    </div>
+  </div>
+</section>
+
+<!-- DETALLE DE PROYECTOS (pantalla completa) -->
+<div class="project-detail" id="detail-proyecto-1" role="dialog" aria-modal="true">
+  <button class="detail-close" aria-label="Cerrar">&times;</button>
+  <div class="detail-content">
+    <h2>TradeSim</h2>
+    <img class="detail-image" src="assets/img/tradesim-cover.jpg" alt="Portada del proyecto TradeSim">
+    <p class="detail-desc">TradeSim es una plataforma de inversión en un entorno simulado: una herramienta educativa para practicar sin riesgo económico real, identificar fraudes y estafas comunes del sector, y comprender el funcionamiento de los mercados antes de dar el salto a un entorno real.</p>
+    <p class="detail-explain">Lo desarrollé como Trabajo de Fin de Grado, partiendo de un problema real: la mayoría de plataformas de inversión están pensadas para usuarios avanzados, dejando fuera a quien no tiene experiencia previa y facilitando que caiga en fraudes por desconocimiento. El objetivo era permitir simulaciones con distintos perfiles de riesgo, registrar operaciones y ofrecer datos realistas sobre una arquitectura backend modular y escalable.</p>
+    <p class="detail-explain">Tras evaluar varias opciones, elegí NestJS con TypeScript por su estructura modular y su compatibilidad con productos escalables y mantenibles, con una API REST como núcleo y el backend organizado por capas. Los datos se persisten en PostgreSQL a través de MikroORM, con migraciones versionadas, y todo el entorno está dockerizado con Docker Compose para facilitar el despliegue y la replicabilidad (pensado para alojarse en AWS). La calidad del código se apoya en una suite de tests con Jest, ESLint y Prettier. Fue mi primer proyecto backend real de principio a fin: desde la planificación con un diagrama de Gantt hasta la arquitectura, el modelado de datos y la resolución de los problemas que fueron surgiendo por el camino.</p>
+    <div class="tech-list">
+      <span class="tech-chip">NestJS</span>
+      <span class="tech-chip">TypeScript</span>
+      <span class="tech-chip">PostgreSQL</span>
+      <span class="tech-chip">MikroORM</span>
+      <span class="tech-chip">Docker</span>
+      <span class="tech-chip">Jest</span>
+    </div>
+    <div class="detail-links">
+      <a class="detail-link" href="https://github.com/Eloypg/TradeSim" target="_blank" rel="noopener">
+        Ver repositorio en GitHub
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17 17 7M7 7h10v10"/></svg>
+      </a>
+      <a class="detail-link" href="assets/docs/tfg-tradesim-presentacion.pdf" target="_blank" rel="noopener">
+        Ver presentación del TFG (PDF)
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17 17 7M7 7h10v10"/></svg>
+      </a>
+    </div>
+  </div>
+</div>
+
+<!-- CONTACTO -->
+<section id="contacto" class="reveal">
+  <h2 class="section-title">Contacto</h2>
+  <p class="section-sub" style="margin-left:auto;margin-right:auto;">¿Quieres hablar? Aquí me encuentras.</p>
+  <div class="contact-links">
+    <a class="contact-link" href="mailto:pardogurreaeloy@gmail.com">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg>
+      pardogurreaeloy@gmail.com
+    </a>
+    <a class="contact-link" href="https://www.linkedin.com/in/eloypardogurrea" target="_blank" rel="noopener">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/><path d="M10 9v12M10 13a4 4 0 0 1 8 0v8"/></svg>
+      LinkedIn
+    </a>
+    <a class="contact-link" href="https://github.com/Eloypg" target="_blank" rel="noopener">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.9a3.4 3.4 0 0 0-1-2.6c3 0 6-2 6-5.5a4.4 4.4 0 0 0-1.2-3.1 4 4 0 0 0-.1-3.1s-1-.3-3.3 1.2a11.5 11.5 0 0 0-6 0C7 2.9 6 3.2 6 3.2a4 4 0 0 0-.1 3.1A4.4 4.4 0 0 0 4.7 9c0 3.5 3 5.5 6 5.5a3.4 3.4 0 0 0-1 2.6V21"/></svg>
+      GitHub
+    </a>
+  </div>
+  <footer>
+    © 2026 Eloy Pardo.
+  </footer>
+</section>
+
+<script src="assets/js/script.js" defer></script>
+
+</body>
+</html>
