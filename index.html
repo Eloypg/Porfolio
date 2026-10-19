@@ -217,6 +217,10 @@
       <h3>TradeSim</h3>
       <p class="desc-short">API de simulación del mercado de criptomonedas para practicar estrategias de trading sin arriesgar dinero real.</p>
     </div>
+    <div class="project-card" data-project="proyecto-2" tabindex="0" role="button" aria-haspopup="dialog">
+      <h3>Booking Engine</h3>
+      <p class="desc-short">API REST de reservas que garantiza que dos usuarios nunca puedan reservar la misma franja, incluso bajo concurrencia real.</p>
+    </div>
   </div>
 </section>
 
@@ -244,6 +248,43 @@
       </a>
       <a class="detail-link" href="assets/docs/tfg-tradesim-presentacion.pdf" target="_blank" rel="noopener">
         Ver presentación del TFG (PDF)
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17 17 7M7 7h10v10"/></svg>
+      </a>
+    </div>
+  </div>
+</div>
+
+<div class="project-detail" id="detail-proyecto-2" role="dialog" aria-modal="true">
+  <button class="detail-close" type="button" aria-label="Cerrar">&times;</button>
+  <div class="detail-content">
+    <h2>Booking Engine</h2>
+    <img class="detail-image detail-image--screenshot" src="assets/img/booking-engine-service.png" alt="Método createBooking de BookingService, que bloquea el slot con findByIdForUpdate dentro de una transacción">
+    <p class="detail-desc">Booking Engine es una API REST para reservar franjas horarias sobre recursos compartidos —pistas, salas o equipamiento— construida alrededor de un problema concreto y difícil: garantizar que dos usuarios nunca puedan reservar la misma franja al mismo tiempo, incluso cuando las peticiones llegan a la vez.</p>
+    <p class="detail-explain">La mayoría de sistemas de reservas sencillos esconden una race condition clásica: dos peticiones leen el mismo slot como libre, ambas deciden que es seguro reservarlo y ambas escriben su reserva, de modo que la base de datos acaba con dos reservas para el mismo hueco. Como solo se prueba a mano, una petición cada vez, el fallo pasa desapercibido hasta que aparece en producción. Mi objetivo era que esa doble reserva fuese imposible, no solo improbable, y demostrarlo con un test automatizado.</p>
+    <p class="detail-explain">La solución se basa en locking pesimista: al llegar una reserva, la fila del slot se bloquea en base de datos (<code>SELECT ... FOR UPDATE</code>) dentro de una transacción antes de comprobar su estado, así que «comprobar si está libre» y «marcarlo como ocupado» se vuelven atómicos. Lo elegí frente al locking optimista porque, en un flujo de «el primero que llega se queda el hueco», la petición que pierde debe recibir enseguida un claro «ya está ocupado» en lugar de fallar después y tener que reintentar. Como segunda línea de defensa, una restricción única sobre <code>slot_id</code> hace que PostgreSQL rechace cualquier segundo insert, y esa violación se traduce en un <code>409 Conflict</code> limpio en vez de un error interno.</p>
+    <p class="detail-explain">Para demostrarlo escribí un test de integración que lanza 10 hilos a la vez intentando reservar el mismo slot contra un PostgreSQL real levantado con Testcontainers (una base de datos en memoria no reproduce de verdad los locks ni las constraints). El test comprueba que exactamente una petición recibe <code>201</code> y las otras nueve <code>409</code>, y lo ejecuté varias veces seguidas para asegurar que no es inestable.</p>
+    <img class="detail-image detail-image--screenshot" src="assets/img/booking-engine-concurrency-test.png" alt="BookingConcurrencyTest pasando en IntelliJ contra un PostgreSQL levantado con Testcontainers">
+    <p class="detail-explain">El proyecto está hecho con Java 21 y Spring Boot, con migraciones versionadas en Flyway, documentación interactiva con Swagger (springdoc-openapi) y todo el entorno dockerizado: se levanta con un solo <code>docker compose up</code>.</p>
+    <div class="tech-list">
+      <span class="tech-chip">Java 21</span>
+      <span class="tech-chip">Spring Boot</span>
+      <span class="tech-chip">PostgreSQL</span>
+      <span class="tech-chip">Flyway</span>
+      <span class="tech-chip">Testcontainers</span>
+      <span class="tech-chip">Docker</span>
+      <span class="tech-chip">OpenAPI / Swagger</span>
+    </div>
+    <div class="detail-links">
+      <a class="detail-link" href="https://github.com/Eloypg/Booking-engine" target="_blank" rel="noopener">
+        Ver repositorio en GitHub
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17 17 7M7 7h10v10"/></svg>
+      </a>
+      <a class="detail-link" href="https://github.com/Eloypg/Booking-engine#documentación-de-la-api" target="_blank" rel="noopener">
+        Ver documentación de la API
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17 17 7M7 7h10v10"/></svg>
+      </a>
+      <a class="detail-link" href="https://github.com/Eloypg/Booking-engine/blob/main/src/test/java/com/example/booking_engine/concurrency/BookingConcurrencyTest.java" target="_blank" rel="noopener">
+        Ver test de concurrencia
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17 17 7M7 7h10v10"/></svg>
       </a>
     </div>
